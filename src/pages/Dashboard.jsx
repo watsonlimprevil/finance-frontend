@@ -109,12 +109,15 @@ async function loadTrends(){
   }
 
   return (
-    <div>
+    <div className="dashboard-container">
+    
       <h1>Dashboard</h1>
-
+    
       <Summary summary={summary} />
-
+      
       <CategoryPieChart data={summary?.byCategory || []} />
+      
+
       <MonthlyTrendChart data={trends}/>
       <AddTransaction reload={reloadAll} />
 
@@ -192,7 +195,7 @@ async function loadTrends(){
       cancel={cancelDelete}
       confirm={confirmDelete}
       />
-    </div>
+      </div>
   );
 }
 

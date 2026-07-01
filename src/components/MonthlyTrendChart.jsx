@@ -46,7 +46,7 @@ export default function MonthlyTrendChart({ data }) {
   };
 
   return (
-    <div style={{ marginTop: "30px" }}>
+    <div className='card' style={{ marginTop: "30px" }}>
       <h3>Monthly Trends</h3>
       <Line data={chartData} />
     </div>

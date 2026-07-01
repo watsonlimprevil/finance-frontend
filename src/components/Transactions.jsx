@@ -5,7 +5,7 @@ export default function Transactions({ transactions = [], reload, startEdit , re
   
 
   return (
-    <div>
+    <div className="card">
       <h2>Your Transactions</h2>
 
       {transactions.map(t => (

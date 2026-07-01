@@ -2,7 +2,8 @@ export default function Summary({summary}){
   if(!summary) return null;
 
   return(
-    <div style={{marginBottom:'20px'}}>
+   
+    <div className='card' style={{marginBottom:'20px'}}>
        <h2>Summary</h2>
        <p><strong>Total Income</strong>${summary.income}</p>
        <p><strong>Total expenses</strong>${summary.expenses}</p>
