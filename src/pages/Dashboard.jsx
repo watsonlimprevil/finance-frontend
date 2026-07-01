@@ -6,6 +6,7 @@ import CategoryPieChart from "../components/CategoryPieChart.jsx";
 import AddTransaction from "../components/AddTransactions.jsx";
 import EditTransaction from "../components/EditTransactions.jsx";
 import { DeleteConfirm } from "./Delete.jsx";
+import MonthlyTrendChart from "../components/MonthlyTrendChart.jsx";
 export default function Dashboard() {
   const [summary, setSummary] = useState(null);
   const [transactions, setTransactions] = useState([]);
@@ -114,7 +115,7 @@ async function loadTrends(){
       <Summary summary={summary} />
 
       <CategoryPieChart data={summary?.byCategory || []} />
-
+      <MonthlyTrendChart data={trends}/>
       <AddTransaction reload={reloadAll} />
 
       <EditTransaction editing={editing} cancel={() => setEditing(null)} reload={reloadAll} />
