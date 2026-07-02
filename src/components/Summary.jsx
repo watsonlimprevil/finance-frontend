@@ -19,21 +19,6 @@ export default function Summary({summary}){
        <p>Income: ${summary.last30Days?.income}</p>
        <p>Expenses:${summary.last30Days?.expenses}</p>
        <p>Net: ${summary.last30Days?.net}</p>
-
-       <h3>Insights</h3>
-       <p>
-        Highest Category:
-        {summary.highestCategory?.category 
-        ? `${summary.highestCategory?.category} ($${summary.highestCategory?.total})`
-        : 'none'
-        }
-       </p>
-       <p>
-        Avegrage Daily Spending: ${summary.averageDailySpending}
-       </p>
-       <p>
-        Total Transactions: {summary.count}
-       </p>
     </div>
   )
 }

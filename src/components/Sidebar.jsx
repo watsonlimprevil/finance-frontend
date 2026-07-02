@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom"
 export default function Sidebar(){
     return(
         <div className="sidebar">
             <h2 className="sidebar-title">Finance</h2>
             <nav className="sidebar-nav">
-                <a href="/dashboard">Dashboard</a>
-                <a href="/transactions">Transactions</a>
-                <a href="/insights">Insights</a>
-                <a href="/settings">Settings</a>
+                <Link to={'/dashboard'}>Dashboard</Link>
+                <Link to={'/transactions'}>Transactions</Link>
+                <Link to={'/insights'}>Insights</Link>
+                <Link to={'/settings'}>Settings</Link>
             </nav>
         </div>
     )

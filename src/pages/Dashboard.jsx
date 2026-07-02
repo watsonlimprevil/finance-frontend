@@ -7,6 +7,7 @@ import AddTransaction from "../components/AddTransactions.jsx";
 import EditTransaction from "../components/EditTransactions.jsx";
 import { DeleteConfirm } from "./Delete.jsx";
 import MonthlyTrendChart from "../components/MonthlyTrendChart.jsx";
+import Insights from "./Insights.jsx";
 export default function Dashboard() {
   const [summary, setSummary] = useState(null);
   const [transactions, setTransactions] = useState([]);
@@ -114,6 +115,7 @@ async function loadTrends(){
       <h1>Dashboard</h1>
     
       <Summary summary={summary} />
+      <Insights summary={summary} />
       
       <CategoryPieChart data={summary?.byCategory || []} />
       
