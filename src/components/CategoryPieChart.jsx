@@ -4,7 +4,8 @@ export default function CategoryPieChart({ data = [] }) {
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 if(!data) return null;
   return (
-    <div className="card">
+    <div className="section">
+      <div className="chart-container">
     <PieChart width={350} height={350}>
       <Pie
         data={data}
@@ -22,6 +23,7 @@ if(!data) return null;
       <Tooltip />
       <Legend />
     </PieChart>
+    </div>
     </div>
   );
 }

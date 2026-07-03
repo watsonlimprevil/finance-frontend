@@ -62,7 +62,7 @@ export default function AddTransaction({ reload }) {
   }
 
   return (
-    <div className="card">
+    <div className="section">
     <form onSubmit={submit}>
       <h3>Add Transaction</h3>
 

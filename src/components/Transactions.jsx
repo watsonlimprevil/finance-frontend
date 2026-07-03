@@ -5,11 +5,11 @@ export default function Transactions({ transactions = [], reload, startEdit , re
   
 
   return (
-    <div className="card">
+    <div className="section">
       <h2>Your Transactions</h2>
 
-      {transactions.map(t => (
-        <div key={t.id} style={{ marginBottom: "10px" }}>
+      {transactions?.map(t => (
+        <div key={t.id} className="transaction-item">
           {t.date} — {t.type} — {t.category} — ${t.amount}
 
           <button

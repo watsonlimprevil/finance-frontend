@@ -17,6 +17,71 @@
   }
 }
 
+
+.transaction-item {
+  margin-bottom: 10px;
+}
+
+
+.sidebar-nav a {
+  display: block;
+  padding: 10px;
+  color: #ccc;
+  text-decoration: none;
+}
+
+.sidebar-nav a.active {
+  background-color: #222;
+  color: #fff;
+  font-weight: bold;
+  border-left: 4px solid #4caf50; /* green accent */
+}
+
+.sidebar {
+  width: 220px;
+  background: #141414;
+  padding: 20px;
+  min-height: 10vh;
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+.chart-container {
+  height: 300px;
+}
+
+.chart-container {
+  height: 350px;
+  overflow: hidden;
+}
+
+
+.main-content{
+  flex:1;
+  padding:20px;
+  overflow-y: auto;
+}
+
+.page-container{
+  max-width: 1200px;
+  margin: 0 auto;
+ padding-bottom: 40px;
+}
+.section{
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.section form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 .hero {
   position: relative;
 

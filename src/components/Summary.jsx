@@ -3,7 +3,7 @@ export default function Summary({summary}){
 
   return(
    
-    <div className='card' style={{marginBottom:'20px'}}>
+    <div className='section' >
        <h2>Summary</h2>
        <p><strong>Total Income</strong>${summary.income}</p>
        <p><strong>Total expenses</strong>${summary.expenses}</p>

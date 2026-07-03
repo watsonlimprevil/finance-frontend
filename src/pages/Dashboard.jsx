@@ -108,96 +108,90 @@ async function loadTrends(){
       </div>
     );
   }
-
+  console.log("Dashboard is inside Layout");
   return (
-    <div className="dashboard-container">
-    
+  
+
+  <>
+    <div className="section">
       <h1>Dashboard</h1>
-    
+    </div>
+
+    <div className="section">
       <Summary summary={summary} />
+    </div>
+
+    <div className="section">
       <Insights summary={summary} />
-      
+    </div>
+
+    <div className="section">
       <CategoryPieChart data={summary?.byCategory || []} />
-      
+    </div>
 
-      <MonthlyTrendChart data={trends}/>
+    <div className="section">
+      <MonthlyTrendChart data={trends} />
+    </div>
+
+    <div className="section">
       <AddTransaction reload={reloadAll} />
+    </div>
 
+    <div className="section">
       <EditTransaction editing={editing} cancel={() => setEditing(null)} reload={reloadAll} />
+    </div>
 
-        <div style={{marginBottom : '20px'}}>
-          <select value={typeFilter} onChange={e =>setTypeFilter(e.target.value)}>
-            <option value=''>All Types</option>
-            <option value='income'>Income</option>
-            <option value='expense'>Expense</option>
+    <div className="section">
+      <select value={typeFilter} onChange={e => setTypeFilter(e.target.value)}>
+        <option value=''>All Types</option>
+        <option value='income'>Income</option>
+        <option value='expense'>Expense</option>
+      </select>
 
-          </select>
-          <select value={categoryFilter} onChange={e=> setCategoryFilter(e.target.value)}>
-         <option value={''}>All Categories</option>
-         <option value={'food'}>Food</option>
-         <option value={'car'}>Car</option>
-         <option value={'rent'}>Rent</option>
-          </select>
+      <select value={categoryFilter} onChange={e => setCategoryFilter(e.target.value)}>
+        <option value=''>All Categories</option>
+        <option value='food'>Food</option>
+        <option value='car'>Car</option>
+        <option value='rent'>Rent</option>
+      </select>
 
+      <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)} />
+      <input type="date" value={endDate} onChange={e => setEndate(e.target.value)} />
 
-          <input
-          type="date"
-          value={startDate}
-          onChange={e => setStartDate(e.target.value)}
-          placeholder="start date"
-          />
+      <select value={sort} onChange={e => setSort(e.target.value)}>
+        <option value=''>Sort By</option>
+        <option value='date'>Date</option>
+        <option value='amount'>Amount</option>
+      </select>
 
-          <input
-          type="date"
-          value={endDate}
-          onChange={e=> setEndate(e.target.value)}
-          placeholder="end date"
-          />
+      <select value={order} onChange={e => setOrder(e.target.value)}>
+        <option value='desc'>Descending</option>
+        <option value='asc'>Ascending</option>
+      </select>
 
-          <select value={sort} onChange={e=> setSort(e.target.value)}>
-            <option value=''>Sort By</option>
-            <option value={'date'}>Date</option>
-            <option value={'amount'}>Amount</option>
-          </select>
+      <button onClick={() => loadTransactions()}>Apply</button>
+    </div>
 
-          <select value={order} onChange={e=> setOrder(e.target.value)}>
-            <option value={'desc'}>descending</option>
-            <option value={'asc'}>Ascending</option>
-          </select>
-          <button onClick={()=> loadTransactions()}>Apply</button>
-        </div>
-
-
-
+    <div className="section">
       <Transactions
         transactions={transactions}
         reload={reloadAll}
         startEdit={t => setEditing(t)}
-        remove={t=> setDeleting(t)}
+        remove={t => setDeleting(t)}
       />
+    </div>
 
-      <div style={{marginTop :' 20px'}} >
-        <button
-        disabled={page === 1}
-        onClick={()=> setPage(page-1)}
-        >
-          previous
-        </button>
-        <span style={{margin : '0 10px'}}>
-          Page {page} of {totalPages}
-        </span>
-        <button
-        disabled={page === totalPages}
-          onClick={()=> setPage(page+1)}
-          > Next
-        </button>
-      </div>
-      <DeleteConfirm
-      deleting={deleting}
-      cancel={cancelDelete}
-      confirm={confirmDelete}
-      />
-      </div>
-  );
+    <div className="section">
+      <button disabled={page === 1} onClick={() => setPage(page - 1)}>Previous</button>
+      <span style={{ margin: '0 10px' }}>Page {page} of {totalPages}</span>
+      <button disabled={page === totalPages} onClick={() => setPage(page + 1)}>Next</button>
+    </div>
+
+    <div className="section">
+      <DeleteConfirm deleting={deleting} cancel={cancelDelete} confirm={confirmDelete} />
+    </div>
+  </>
+);
+
 }
 
