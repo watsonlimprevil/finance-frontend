@@ -6,7 +6,7 @@ export default function useTransactions(){
 
     useEffect(()=>{
         async function loadTransactions(){
-            const res = await fetch(`${API_URL}/transactions`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/transactions`, {
                 headers: authHeader()
             })
             const data = await res.json()

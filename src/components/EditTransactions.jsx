@@ -59,7 +59,7 @@ export default function EditTransaction({ editing, cancel, reload }) {
 
     if (!validate()) return;
 
-    await fetch(`${API_URL}/transactions/${editing.id}`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/transactions/${editing.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

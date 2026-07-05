@@ -5,7 +5,7 @@ export default function useSummary(){
 
     useEffect(()=>{
         async function load(){
-            const res = await fetch(`${API_URL}/transactions/summary`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/transactions/summary`, {
                 headers: authHeader()
             })
             const data = await res.json()

@@ -43,7 +43,7 @@ export default function AddTransaction({ reload }) {
 
     if (!validate()) return;
 
-    await fetch(`${API_URL}/transactions`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/transactions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

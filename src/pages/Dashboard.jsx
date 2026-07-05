@@ -48,7 +48,7 @@ async function reloadAll() {
 
 
   async function loadSummary() {
-    const res = await fetch(`${API_URL}/transactions/summary`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/transactions/summary`, {
       headers: authHeader()
     });
     console.log(res)
@@ -56,7 +56,7 @@ async function reloadAll() {
   }
 
   async function loadTransactions() {
-    const res = await fetch(`${API_URL}/transactions?page=${page}&limit=${limit}&type=${typeFilter}&category=${categoryFilter}&startDate=${startDate}&endDate=${endDate}&sort=${sort}&order=${order}`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/transactions?page=${page}&limit=${limit}&type=${typeFilter}&category=${categoryFilter}&startDate=${startDate}&endDate=${endDate}&sort=${sort}&order=${order}`, {
       headers: authHeader()
     });
     const data = await res.json();
@@ -69,7 +69,7 @@ async function reloadAll() {
 
 
  async function confirmDelete(){
-  await fetch(`${API_URL}/transactions/${deleting.id}`, {
+  await fetch(`${import.meta.env.VITE_API_URL}/transactions/${deleting.id}`, {
     method: 'DELETE',
     headers: authHeader()
   })
@@ -81,7 +81,7 @@ async function reloadAll() {
 }
 
 async function loadTrends(){
-  const res = await fetch(`${API_URL}/transactions/trends` , {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/transactions/trends` , {
     headers: authHeader()
   });
 
