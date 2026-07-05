@@ -41,7 +41,8 @@
   width: 220px;
   background: #141414;
   padding: 20px;
-  min-height: 10vh;
+  min-height: 100vh;
+  flex-shrink: 0;
 }
 
 .app-layout {
