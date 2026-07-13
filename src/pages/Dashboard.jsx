@@ -50,7 +50,17 @@ async function reloadAll() {
   }
 }
 
+useEffect(()=>{
+  if(!search.trim()) {
+    setSearchResults(null);
+    return
+  }
 
+  const timeout = setTimeout(()=>{
+    handleSearch()
+  },300)
+  return () => clearTimeout(timeout)
+}, [search])
   async function loadSummary() {
     const res = await fetch(`${import.meta.env.VITE_API_URL}/transactions/summary`, {
       headers: authHeader()
