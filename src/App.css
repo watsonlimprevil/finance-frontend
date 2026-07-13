@@ -23,26 +23,33 @@
 }
 
 
-.sidebar-nav a {
-  display: block;
-  padding: 10px;
-  color: #ccc;
-  text-decoration: none;
-}
-
-.sidebar-nav a.active {
-  background-color: #222;
-  color: #fff;
-  font-weight: bold;
-  border-left: 4px solid #4caf50; /* green accent */
-}
-
+/* Sidebar is collapsed by default */
 .sidebar {
-  width: 220px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 60px;            /* collapsed width */
+  height: 100vh;
   background: #141414;
-  padding: 20px;
-  min-height: 100vh;
-  flex-shrink: 0;
+  overflow: hidden;
+  transition: width 0.3s ease;
+  z-index: 1000;
+}
+
+/* Sidebar expands on hover */
+.sidebar:hover {
+  width: 220px;           /* expanded width */
+}
+
+/* Main content shifts only when sidebar is expanded */
+.sidebar:hover ~ .main-content {
+  margin-left: 220px;
+}
+
+/* Default main content position */
+.main-content {
+  margin-left: 60px;      /* collapsed sidebar width */
+  transition: margin-left 0.3s ease;
 }
 
 .app-layout {
