@@ -8,6 +8,7 @@ import EditTransaction from "../components/EditTransactions.jsx";
 import { DeleteConfirm } from "./Delete.jsx";
 import MonthlyTrendChart from "../components/MonthlyTrendChart.jsx";
 import Insights from "./Insights.jsx";
+
 export default function Dashboard() {
   const [summary, setSummary] = useState(null);
   const [transactions, setTransactions] = useState([]);
@@ -25,6 +26,9 @@ export default function Dashboard() {
   const [sort , setSort] = useState('');
   const [order, setOrder] = useState('desc')
   const [trends, setTrends]= useState([])
+
+  const [search , setSearch] = useState('')
+  const [searchResults , setSearchResults] = useState(null)
   useEffect(() => {
    
       reloadAll()
@@ -89,6 +93,23 @@ async function loadTrends(){
   setTrends(data.trends);
 }
 
+async function handleSearch(){
+  if(!search.trim()) return;
+
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/transactions/search?q=${search}` ,{
+      headers : authHeader()
+    }
+  );
+
+  const data = await res.json();
+  setSearchResults(data.results)
+}
+
+function claerSEarch(){
+  setSearch('');
+  setSearchResults(null)
+}
   // RENDER STATES
   if (loading) {
     return (
@@ -116,7 +137,17 @@ async function loadTrends(){
     <div className="section">
       <h1>Dashboard</h1>
     </div>
-
+<div className="section">
+<input 
+type="text"
+placeholder="Search transactions"
+value={search}
+onChange={e=> setSearch(e.target.value)}
+style={{padding: '10px' , width: '250px'}}
+/>
+<button onClick={handleSearch}>Search</button>
+<button onClick={claerSEarch}>Clear</button>
+</div>
     <div className="section">
       <Summary summary={summary} />
     </div>
@@ -173,12 +204,21 @@ async function loadTrends(){
     </div>
 
     <div className="section">
-      <Transactions
-        transactions={transactions}
-        reload={reloadAll}
-        startEdit={t => setEditing(t)}
-        remove={t => setDeleting(t)}
+     {searchResults ?(
+      <Transactions 
+      transactions={searchResults}
+      reload={reloadAll}
+      startEdit={t => setEditing(t)}
+      remove={t => setDeleting(t)}
       />
+     ):(
+      <Transactions
+      transactions={transactions}
+      reload={reloadAll}
+      startEdit={t => setEditing(t)}
+      remove={t => setDeleting(t)}
+      />
+     )}
     </div>
 
     <div className="section">
