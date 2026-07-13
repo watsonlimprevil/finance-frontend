@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { API_URL, authHeader } from "../utils/api";
-
+import { useNavigate } from "react-router-dom";
 export default function AddTransaction({ reload }) {
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("expense");
@@ -39,7 +39,9 @@ export default function AddTransaction({ reload }) {
   }
 
   async function submit(e) {
+    const nav = useNavigate()
     e.preventDefault();
+    
 
     if (!validate()) return;
 
@@ -59,6 +61,7 @@ export default function AddTransaction({ reload }) {
     });
 
     reload();
+    nav('/dashboard')
   }
 
   return (
