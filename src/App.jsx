@@ -9,6 +9,7 @@ import Insights from "./pages/Insights";
 import Settings from "./components/Settings";
 
 import Layout from "./components/Layout";
+import AddTransaction from "./components/AddTransactions";
 
 export default function App() {
   return (
@@ -61,7 +62,10 @@ export default function App() {
             </Layout>
           }
         />
-
+<Route 
+path='/'
+element={<AddTransaction/>}
+/>
       </Routes>
     </BrowserRouter>
   );
