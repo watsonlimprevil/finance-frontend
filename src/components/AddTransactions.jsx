@@ -8,7 +8,7 @@ export default function AddTransaction({ reload }) {
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
   const [errors, setErrors] = useState({});
-
+ const nav = useNavigate()
   function validate() {
     const newErrors = {};
 
@@ -39,7 +39,7 @@ export default function AddTransaction({ reload }) {
   }
 
   async function submit(e) {
-    const nav = useNavigate()
+   
     e.preventDefault();
     
 
