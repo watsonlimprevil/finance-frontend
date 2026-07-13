@@ -19,7 +19,7 @@ export default function Login() {
     const data = await res.json();
     if (data.token) {
       localStorage.setItem("token", data.token);
-      nav("/");
+      nav("/add");
     }
   }
 

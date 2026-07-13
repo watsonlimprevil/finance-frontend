@@ -63,7 +63,7 @@ export default function App() {
           }
         />
 <Route 
-path='/'
+path='/add'
 element={<AddTransaction/>}
 />
       </Routes>
