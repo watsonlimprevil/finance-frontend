@@ -24,32 +24,40 @@
 
 
 /* Sidebar is collapsed by default */
+/* Invisible hover zone on the left edge */
+.sidebar-trigger {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 10px;      /* small hover area */
+  height: 100vh;
+  z-index: 999;
+}
+
+/* Sidebar stays hidden (collapsed) */
 .sidebar {
   position: fixed;
   left: 0;
   top: 0;
-  width: 60px;            /* collapsed width */
+  width: 220px;
   height: 100vh;
   background: #141414;
-  overflow: hidden;
-  transition: width 0.3s ease;
+  transform: translateX(-100%);   /* fully hidden */
+  transition: transform 0.3s ease;
   z-index: 1000;
+  padding: 20px;
 }
 
-/* Sidebar expands on hover */
+/* Sidebar appears when hovering the trigger OR the sidebar itself */
+.sidebar-trigger:hover + .sidebar,
 .sidebar:hover {
-  width: 220px;           /* expanded width */
+  transform: translateX(0);       /* slide in */
 }
 
-/* Main content shifts only when sidebar is expanded */
-.sidebar:hover ~ .main-content {
-  margin-left: 220px;
-}
-
-/* Default main content position */
+/* Main content NEVER moves */
 .main-content {
-  margin-left: 60px;      /* collapsed sidebar width */
-  transition: margin-left 0.3s ease;
+  margin-left: 0;
+  transition: none;
 }
 
 .app-layout {
