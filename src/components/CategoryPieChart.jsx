@@ -2,7 +2,7 @@ import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 
 export default function CategoryPieChart({ data = [] }) {
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
-if(!data) return null;
+if(!data || data.length === 0) return null;
   return (
     <div className="section">
       <div className="chart-container">
