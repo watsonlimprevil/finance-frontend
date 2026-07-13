@@ -31,6 +31,11 @@ export default function Sidebar(){
             >
                 Settings
             </NavLink>
+          <NavLink to={'/add'}
+          className={({isActive})=> isActive ? 'active' : ''}
+          >
+            Add Transaction
+          </NavLink>
           </nav>
         </div>
     )
