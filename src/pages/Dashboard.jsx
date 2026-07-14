@@ -8,7 +8,7 @@ import EditTransaction from "../components/EditTransactions.jsx";
 import { DeleteConfirm } from "./Delete.jsx";
 import MonthlyTrendChart from "../components/MonthlyTrendChart.jsx";
 import Insights from "./Insights.jsx";
-
+import BudgetProgress from "../components/BudgetProgress.jsx";
 export default function Dashboard() {
   const [summary, setSummary] = useState(null);
   const [transactions, setTransactions] = useState([]);
@@ -26,7 +26,7 @@ export default function Dashboard() {
   const [sort , setSort] = useState('');
   const [order, setOrder] = useState('desc')
   const [trends, setTrends]= useState([])
-
+  const [budgetProgress , setBudgetProgress] = useState(null)
   const [search , setSearch] = useState('')
   const [searchResults , setSearchResults] = useState(null)
   useEffect(() => {
@@ -34,6 +34,16 @@ export default function Dashboard() {
       reloadAll()
   
   }, []);
+
+  async function loadBudgetProgress() {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}transactions/budgets/progress`, {
+    headers: authHeader()
+  });
+
+  const data = await res.json();
+  setBudgetProgress(data.progress);
+}
+
 
 async function reloadAll() {
   setLoading(true);
@@ -43,6 +53,7 @@ async function reloadAll() {
     await loadSummary();   // only summary reloads
     await loadTransactions()
     await loadTrends()
+    await loadBudgetProgress()
   } catch (error) {
     setError("Failed to load dashboard data");
   } finally {
@@ -165,6 +176,11 @@ style={{padding: '10px' , width: '250px'}}
     <div className="section">
       <Insights summary={summary} />
     </div>
+
+    <div className="section">
+  <BudgetProgress progress={budgetProgress} />
+</div>
+
 
     <div className="section">
       <CategoryPieChart data={summary?.byCategory || []} />
