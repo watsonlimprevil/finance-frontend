@@ -36,6 +36,12 @@ export default function Sidebar(){
           >
             Add Transaction
           </NavLink>
+
+          <NavLink 
+          to={'/budgets'}
+          >
+            Budget
+          </NavLink>
           </nav>
         </div>
     )

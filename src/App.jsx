@@ -10,6 +10,7 @@ import Settings from "./components/Settings";
 
 import Layout from "./components/Layout";
 import AddTransaction from "./components/AddTransactions";
+import Budgets from "./pages/Budgets";
 
 export default function App() {
   return (
@@ -65,6 +66,10 @@ export default function App() {
 <Route 
 path='/add'
 element={<AddTransaction/>}
+/>
+<Route
+path='/budgets'
+element={<Budgets/>}
 />
       </Routes>
     </BrowserRouter>
