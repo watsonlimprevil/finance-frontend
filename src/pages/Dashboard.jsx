@@ -36,7 +36,7 @@ export default function Dashboard() {
   }, []);
 
   async function loadBudgetProgress() {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}transactions/budgets/progress`, {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/transactions/budgets/progress`, {
     headers: authHeader()
   });
 
