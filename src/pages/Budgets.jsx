@@ -1,11 +1,13 @@
 import { useEffect , useState } from "react";
 import { authHeader } from "../utils/api";
+import { useNavigate } from "react-router-dom";
 
 export default function Budgets(){
     const [budgets , setBudgets] = useState([]);
     const [amount , setAmount] = useState('')
     const [category , setCategory] = useState('')
     const [loading , setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(()=>{
         loadBudgets();
@@ -47,7 +49,7 @@ export default function Budgets(){
 
     return(
         <div style={{padding :20}}>
-            <button onClick={()=> window.location.href = '/dashboard'}>
+            <button onClick={()=> navigate('/dashboard')}>
                 Back to Dashboard
             </button>
 
