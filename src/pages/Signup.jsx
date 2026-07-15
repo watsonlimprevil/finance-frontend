@@ -10,7 +10,7 @@ export default function Signup(){
     const [error , setError] = useState('')
 
     async function handleSignUp(e){
-        e.preventDEfault();
+        e.preventDefault();
         setError("");
 
         try{
