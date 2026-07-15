@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { authHeader } from "../utils/api";
 export default function Settings(){
 
     const API_URL = import.meta.env.VITE_API_URL;
@@ -12,7 +13,10 @@ export default function Settings(){
         try{
             const res = await fetch(`${API_URL}/transactions/budgets/monthly` ,{
                 method: 'PATCH',
-                headers:{'Content-Type': 'application/json'},
+                headers:{'Content-Type': 'application/json' ,
+                    ...authHeader()
+                } 
+                ,
                 body: JSON.stringify({budget: Number(monthlyBudget)})
             });
 
