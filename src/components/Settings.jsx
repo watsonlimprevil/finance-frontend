@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { authHeader } from "../utils/api";
+import { useNavigate } from "react-router-dom";
 export default function Settings(){
 
     const API_URL = import.meta.env.VITE_API_URL;
@@ -8,7 +9,7 @@ export default function Settings(){
     const [currency , setCurrency] = useState('USD')
     const [theme , setTheme] = useState('dark')
     const [message , setMessage] = useState('')
-
+    const navigate = useNavigate()
     async function updateMonthlyBudget(){
         try{
             const res = await fetch(`${API_URL}/transactions/budgets/monthly` ,{
@@ -26,7 +27,10 @@ export default function Settings(){
             setMessage(error.message)
         }
     }
-
+function handleLogout(){
+    localStorage.removeItem('token')
+    navigate('/login')
+}
 
     async function saveCurrency(){
         localStorage.setItem('currency' , currency)
@@ -80,6 +84,8 @@ export default function Settings(){
                     Reset All Data
                 </button>
             </section>
+
+            <button onClick={handleLogout}>Logout</button>
         </div>
     )
 }
