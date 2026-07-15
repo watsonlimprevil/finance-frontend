@@ -52,12 +52,11 @@ export default function Signup(){
 
             </form>
             <p>
-                Already have an account?{''}
                 <span 
                 style={{color: 'cyan' , cursor: 'pointer'}}
                 onClick={() => navigate('/login')}
                 >
-
+                    Already have an account?{''}
                 </span>
             </p>
         </div>
