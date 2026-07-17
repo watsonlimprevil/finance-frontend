@@ -165,24 +165,28 @@ function claerSEarch(){
       <h1>Dashboard</h1>
     </div>
 
-    <div>
+    <div className="card">
+      <h2 className="card-title">Summary</h2>
       <Summary summary={summary} />
     </div>
 
-    <div>
+    <div className="card">
+      <h2 className="card-title">Insights</h2>
       <Insights summary={summary} />
     </div>
 
-    <div>
+    <div className="card">
+      <h2 className="card-title">Budget Progress</h2>
   <BudgetProgress progress={budgetProgress} />
 </div>
 
 
-    <div>
+    <div className="card">
+      <h2 className="card-title">Category Piechart</h2>
       <CategoryPieChart data={summary?.byCategory || []} />
     </div>
 
-    <div>
+    <div className="card">
       <MonthlyTrendChart data={trends} />
     </div>
 
@@ -197,11 +201,13 @@ onAdd={addTransaction}
 />
     
 
-    <div>
+    <div className="card">
+      <h2 className="card-title">Edit Transactions</h2>
       <EditTransaction editing={editing} cancel={() => setEditing(null)} reload={reloadAll} />
     </div>
 
-    <div>
+    <div className="card">
+
       <select value={typeFilter} onChange={e => setTypeFilter(e.target.value)}>
         <option value=''>All Types</option>
         <option value='income'>Income</option>
@@ -232,8 +238,8 @@ onAdd={addTransaction}
       <button onClick={() => loadTransactions()}>Apply</button>
     </div>
 
-    <div>
-     
+    <div className="card">
+     <h2 className="card-title"></h2>
       <Transactions
       transactions={transactions}
       reload={reloadAll}
@@ -243,13 +249,13 @@ onAdd={addTransaction}
      
     </div>
 
-    <div>
+    <div className="card">
       <button disabled={page === 1} onClick={() => setPage(page - 1)}>Previous</button>
       <span style={{ margin: '0 10px' }}>Page {page} of {totalPages}</span>
       <button disabled={page === totalPages} onClick={() => setPage(page + 1)}>Next</button>
     </div>
 
-    <div>
+    <div className="card">
       <DeleteConfirm deleting={deleting} cancel={cancelDelete} confirm={confirmDelete} />
     </div>
   </>
