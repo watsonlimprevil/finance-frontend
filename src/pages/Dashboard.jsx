@@ -166,17 +166,14 @@ function claerSEarch(){
     </div>
 
     <div className="card">
-      <h2 className="card-title">Summary</h2>
       <Summary summary={summary} />
     </div>
 
     <div className="card">
-      <h2 className="card-title">Insights</h2>
       <Insights summary={summary} />
     </div>
 
     <div className="card">
-      <h2 className="card-title">Budget Progress</h2>
   <BudgetProgress progress={budgetProgress} />
 </div>
 
