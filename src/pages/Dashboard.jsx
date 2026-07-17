@@ -149,7 +149,7 @@ function claerSEarch(){
 
   if (error) {
     return (
-      <div className="dashboard-grid">
+      <div>
         <h1>Dashboard</h1>
         <p style={{ color: "red" }}>{error}</p>
         <button onClick={reloadAll}>Retry</button>
@@ -161,28 +161,28 @@ function claerSEarch(){
   
 
   <>
-    <div className="section">
+    <div className="dashboard-grid">
       <h1>Dashboard</h1>
     </div>
 
-    <div className="section">
+    <div>
       <Summary summary={summary} />
     </div>
 
-    <div className="section">
+    <div>
       <Insights summary={summary} />
     </div>
 
-    <div className="section">
+    <div>
   <BudgetProgress progress={budgetProgress} />
 </div>
 
 
-    <div className="section">
+    <div>
       <CategoryPieChart data={summary?.byCategory || []} />
     </div>
 
-    <div className="section">
+    <div>
       <MonthlyTrendChart data={trends} />
     </div>
 
@@ -197,11 +197,11 @@ onAdd={addTransaction}
 />
     
 
-    <div className="section">
+    <div>
       <EditTransaction editing={editing} cancel={() => setEditing(null)} reload={reloadAll} />
     </div>
 
-    <div className="section">
+    <div>
       <select value={typeFilter} onChange={e => setTypeFilter(e.target.value)}>
         <option value=''>All Types</option>
         <option value='income'>Income</option>
@@ -232,7 +232,7 @@ onAdd={addTransaction}
       <button onClick={() => loadTransactions()}>Apply</button>
     </div>
 
-    <div className="section">
+    <div>
      
       <Transactions
       transactions={transactions}
@@ -243,13 +243,13 @@ onAdd={addTransaction}
      
     </div>
 
-    <div className="section">
+    <div>
       <button disabled={page === 1} onClick={() => setPage(page - 1)}>Previous</button>
       <span style={{ margin: '0 10px' }}>Page {page} of {totalPages}</span>
       <button disabled={page === totalPages} onClick={() => setPage(page + 1)}>Next</button>
     </div>
 
-    <div className="section">
+    <div>
       <DeleteConfirm deleting={deleting} cancel={cancelDelete} confirm={confirmDelete} />
     </div>
   </>
