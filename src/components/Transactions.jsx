@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { authHeader } from "../utils/api.js";
 
 export default function Transactions({ transactions = [], reload, startEdit, remove }) {
@@ -24,6 +24,13 @@ export default function Transactions({ transactions = [], reload, startEdit, rem
   }
 
   const listToShow = searchResults || transactions;
+
+  useEffect(()=>{
+    const interval = setTimeout(() => {
+      handleSearch()
+    },300)
+    return () => clearTimeout(interval)
+  },[search])
 
   return (
     <div className="transactions section">
