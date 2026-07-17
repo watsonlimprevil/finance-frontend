@@ -369,3 +369,45 @@
   overflow: hidden;
 }
 
+.highlight-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 20px;
+  gap: 20px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.highlight-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.highlight-item .label {
+  font-size: 14px;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.highlight-item .value {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Color accents */
+.income .value {
+  color: #4caf50; /* green */
+}
+
+.expenses .value {
+  color: #f44336; /* red */
+}
+
+.net .value {
+  color: #2196f3; /* blue */
+}
