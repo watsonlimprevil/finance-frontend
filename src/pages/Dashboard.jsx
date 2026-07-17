@@ -114,18 +114,7 @@ async function loadTrends(){
   setTrends(data.trends);
 }
 
-async function handleSearch(){
-  if(!search.trim()) return;
 
-  const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/transactions/search?q=${search}` ,{
-      headers : authHeader()
-    }
-  );
-
-  const data = await res.json();
-  setSearchResults(data.results)
-}
 
 function claerSEarch(){
   setSearch('');
@@ -158,17 +147,7 @@ function claerSEarch(){
     <div className="section">
       <h1>Dashboard</h1>
     </div>
-<div className="section">
-<input 
-type="text"
-placeholder="Search transactions"
-value={search}
-onChange={e=> setSearch(e.target.value)}
-style={{padding: '10px' , width: '250px'}}
-/>
-<button onClick={handleSearch}>Search</button>
-<button onClick={claerSEarch}>Clear</button>
-</div>
+
     <div className="section">
       <Summary summary={summary} />
     </div>
@@ -230,21 +209,14 @@ style={{padding: '10px' , width: '250px'}}
     </div>
 
     <div className="section">
-     {searchResults ?(
-      <Transactions 
-      transactions={searchResults}
-      reload={reloadAll}
-      startEdit={t => setEditing(t)}
-      remove={t => setDeleting(t)}
-      />
-     ):(
+     
       <Transactions
       transactions={transactions}
       reload={reloadAll}
       startEdit={t => setEditing(t)}
       remove={t => setDeleting(t)}
       />
-     )}
+     
     </div>
 
     <div className="section">

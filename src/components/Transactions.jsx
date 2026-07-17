@@ -1,32 +1,54 @@
-import { API_URL, authHeader } from "../utils/api.js";
+import { useState } from "react";
+import { authHeader } from "../utils/api.js";
 
-export default function Transactions({ transactions = [], reload, startEdit , remove}) {
+export default function Transactions({ transactions = [], reload, startEdit, remove }) {
 
-  
+  const [search, setSearch] = useState("");
+  const [searchResults, setSearchResults] = useState(null);
+
+  async function handleSearch() {
+    if (!search.trim()) return;
+
+    const res = await fetch(
+      `${import.meta.env.VITE_API_URL}/transactions/search?q=${search}`,
+      { headers: authHeader() }
+    );
+
+    const data = await res.json();
+    setSearchResults(data.results);
+  }
+
+  function handleClear() {
+    setSearch("");
+    setSearchResults(null);
+  }
+
+  const listToShow = searchResults || transactions;
 
   return (
-    <div className="section">
-      <h2>Your Transactions</h2>
+    <div className="transactions section">
 
-      {transactions?.map(t => (
-        <div key={t.id} className="transaction-item">
-          {t.date} — {t.type} — {t.category} — ${t.amount}
+      <input
+        value={search}
+        type="text"
+        placeholder="search transaction"
+        onChange={e => setSearch(e.target.value)}
+      />
 
-          <button
-            style={{ marginLeft: "10px" }}
-            onClick={() => startEdit(t)}
-          >
-            Edit
-          </button>
+      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleClear}>Clear</button>
 
-          <button
-            style={{ marginLeft: "10px", color: "red" }}
-            onClick={() => remove(t)}
-          >
-            Delete
-          </button>
-        </div>
-      ))}
+      <div>
+        {listToShow.map(t => (
+          <div key={t.id}>
+            {t.date} — {t.type} — {t.category} — ${t.amount}
+            <button onClick={() => startEdit(t)}>Edit</button>
+            <button onClick={() => remove(t.id)}>Delete</button>
+          </div>
+        ))}
+      </div>
+
     </div>
   );
 }
+
