@@ -9,6 +9,7 @@ import { DeleteConfirm } from "./Delete.jsx";
 import MonthlyTrendChart from "../components/MonthlyTrendChart.jsx";
 import Insights from "./Insights.jsx";
 import BudgetProgress from "../components/BudgetProgress.jsx";
+import AddTransactionModal from "./AddTransactioModel.jsx";
 export default function Dashboard() {
   const [summary, setSummary] = useState(null);
   const [transactions, setTransactions] = useState([]);
@@ -29,6 +30,8 @@ export default function Dashboard() {
   const [budgetProgress , setBudgetProgress] = useState(null)
   const [search , setSearch] = useState('')
   const [searchResults , setSearchResults] = useState(null)
+  const [showModal, setShowModal] = useState(false);
+
   useEffect(() => {
    
       reloadAll()
@@ -169,9 +172,16 @@ function claerSEarch(){
       <MonthlyTrendChart data={trends} />
     </div>
 
-    <div className="section">
-      <AddTransaction reload={reloadAll} />
-    </div>
+<button className="add-transaction-btn" onClick={() => setShowModal(true)}>
+  + Add Transaction
+</button>
+
+<AddTransactionModal 
+show={showModal}
+onClose={()=> setShowModal(false)}
+onAdd={AddTransaction}
+/>
+    
 
     <div className="section">
       <EditTransaction editing={editing} cancel={() => setEditing(null)} reload={reloadAll} />
