@@ -7,12 +7,12 @@ export default function Summary({summary}){
 
   <div className="highlight-item income">
     <span className="label">Income</span>
-    <span className="value">${summary?.totalIncome || 0}</span>
+    <span className="value">${summary?.income || 0}</span>
   </div>
 
   <div className="highlight-item expenses">
     <span className="label">Expenses</span>
-    <span className="value">${summary?.totalExpenses || 0}</span>
+    <span className="value">${summary?.expenses || 0}</span>
   </div>
 
   <div className="highlight-item net">
