@@ -357,12 +357,15 @@
   gap: 24px;
 }
 
-.chart-card {
-  height: 300px; /* adjust as needed */
-  overflow: hidden;
-}
+
 
 .chart-card {
   box-shadow: 0 0 12px rgba(0,0,0,0.3);
+}
+
+.chart-card {
+  height: 260px;
+  padding: 16px;
+  overflow: hidden;
 }
 
