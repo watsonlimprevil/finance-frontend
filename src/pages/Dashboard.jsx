@@ -48,6 +48,19 @@ export default function Dashboard() {
   setBudgetProgress(data.progress);
 }
 
+async function addTransaction(data) {
+  await fetch(`${import.meta.env.VITE_API_URL}/transactions`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...authHeader()
+    },
+    body: JSON.stringify(data)
+  });
+
+  reloadAll(); // refresh dashboard data
+}
+
 
 async function reloadAll() {
   setLoading(true);
@@ -180,7 +193,7 @@ function claerSEarch(){
 <AddTransactionModal 
 show={showModal}
 onClose={()=> setShowModal(false)}
-onAdd={AddTransaction}
+onAdd={addTransaction}
 />
     
 
