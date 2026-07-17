@@ -149,7 +149,7 @@ function claerSEarch(){
 
   if (error) {
     return (
-      <div>
+      <div className="dashboard-grid">
         <h1>Dashboard</h1>
         <p style={{ color: "red" }}>{error}</p>
         <button onClick={reloadAll}>Retry</button>
