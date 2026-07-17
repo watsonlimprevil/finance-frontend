@@ -10,7 +10,7 @@ import MonthlyTrendChart from "../components/MonthlyTrendChart.jsx";
 import Insights from "./Insights.jsx";
 import BudgetProgress from "../components/BudgetProgress.jsx";
 import AddTransactionModal from "./AddTransactioModel.jsx";
-import AddTransactionModal from "./AddTransactioModel.jsx";
+
 export default function Dashboard() {
   const [summary, setSummary] = useState(null);
   const [transactions, setTransactions] = useState([]);
