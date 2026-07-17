@@ -177,15 +177,16 @@ function claerSEarch(){
   <BudgetProgress progress={budgetProgress} />
 </div>
 
+<div className="chart-row">
+  <div className="card chart-card">
+    <MonthlyTrendChart data={trends} />
+  </div>
 
-    <div className="card">
-      <h2 className="card-title">Category Piechart</h2>
-      <CategoryPieChart data={summary?.byCategory || []} />
-    </div>
+  <div className="card chart-card">
+    <CategoryPieChart data={summary?.byCategory || []} />
+  </div>
+</div>
 
-    <div className="card">
-      <MonthlyTrendChart data={trends} />
-    </div>
 
 <button className="add-transaction-btn" onClick={() => setShowModal(true)}>
   + Add Transaction

@@ -339,3 +339,30 @@
   box-shadow: 0 0 12px rgba(0,0,0,0.3);
   border: 1px solid rgba(255,255,255,0.05);
 }
+
+
+.left-column > .card,
+.right-column > .card {
+  margin-bottom: 24px;
+}
+
+.left-column > .card,
+.right-column > .card {
+  margin-bottom: 24px;
+}
+
+.chart-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.chart-card {
+  height: 300px; /* adjust as needed */
+  overflow: hidden;
+}
+
+.chart-card {
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+}
+
